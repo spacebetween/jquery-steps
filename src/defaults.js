@@ -45,6 +45,16 @@ var defaults = $.fn.steps.defaults = {
     contentTag: "section",
 
     /**
+     * The staticTag is used for static block
+     *
+     * @property staticTag
+     * @type String
+     * @default "aside"
+     * @for defaults
+     **/
+    staticTag: "aside",
+
+    /**
      * The content container tag which will be used to wrap all step contents.
      *
      * @property contentContainerTag

@@ -960,7 +960,7 @@ function render(wizard, options, state)
     else {
         wizardHtml = wizard.html();
     }
-
+    
     // Create a content wrapper and copy HTML from the intial wizard structure
     var wrapperTemplate = "<{0} class=\"{1}\">{2}</{0}>",
         orientation = getValidEnumValue(stepsOrientation, options.stepsOrientation),
@@ -970,8 +970,14 @@ function render(wizard, options, state)
         stepTitles = contentWrapper.children(options.headerTag),
         stepContents = contentWrapper.children(options.bodyTag);
 
+    // get static content
+    var staticTag;
+    if(wizard.children(options.staticTag).length === 1) {
+        staticTag = wizard.children(options.staticTag).first();
+    }
+
     // Transform the wizard wrapper and remove the inner HTML
-    wizard.attr("role", "application").empty().append(stepsWrapper).append(contentWrapper)
+    wizard.attr("role", "application").empty().append(staticTag).append(stepsWrapper).append(contentWrapper)
         .addClass(options.cssClass + " " + options.clearFixCssClass + verticalCssClass);
 
     // Add WIA-ARIA support
