@@ -35,6 +35,16 @@ var defaults = $.fn.steps.defaults = {
     bodyTag: "div",
 
     /**
+     * The section tag is used to find the step content section
+     *
+     * @property contentTag
+     * @type String
+     * @default "section"
+     * @for defaults
+     **/
+    contentTag: "section",
+
+    /**
      * The content container tag which will be used to wrap all step contents.
      *
      * @property contentContainerTag

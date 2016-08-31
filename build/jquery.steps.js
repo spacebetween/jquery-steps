@@ -1,6 +1,6 @@
 /*! 
- * jQuery Steps v1.1.0 - 04/09/2015
- * Copyright (c) 2015 Rafael Staib (http://www.jquery-steps.com)
+ * jQuery Steps v1.2.1 - 08/31/2016
+ * Copyright (c) 2016 Rafael Staib (http://www.jquery-steps.com)
  * Licensed under MIT http://www.opensource.org/licenses/MIT
  */
 ;(function ($, undefined)
@@ -147,8 +147,8 @@ function addStepToCache(wizard, step)
 
 function analyzeData(wizard, options, state)
 {
-    var stepTitles = wizard.children(options.headerTag),
-        stepContents = wizard.children(options.bodyTag);
+    var stepTitles = wizard.find(options.headerTag),
+        stepContents = wizard.find(options.bodyTag);
 
     // Validate content
     if (stepTitles.length > stepContents.length)
@@ -1012,12 +1012,20 @@ function removeStepFromCache(wizard, index)
  * @param state {Object} The state container of the current wizard
  **/
 function render(wizard, options, state)
-{
+{    
+    var wizardHtml = null;
+    if(wizard.children(options.contentTag).length === 1) {
+        wizardHtml = wizard.children(options.contentTag).first().html();
+    }
+    else {
+        wizardHtml = wizard.html();
+    }
+
     // Create a content wrapper and copy HTML from the intial wizard structure
     var wrapperTemplate = "<{0} class=\"{1}\">{2}</{0}>",
         orientation = getValidEnumValue(stepsOrientation, options.stepsOrientation),
         verticalCssClass = (orientation === stepsOrientation.vertical) ? " vertical" : "",
-        contentWrapper = $(wrapperTemplate.format(options.contentContainerTag, options.contentCssClass + " " + options.clearFixCssClass, wizard.html())),
+        contentWrapper = $(wrapperTemplate.format(options.contentContainerTag, options.contentCssClass + " " + options.clearFixCssClass, wizardHtml)),
         stepsWrapper = $(wrapperTemplate.format(options.stepsContainerTag, options.stepsCssClass + " " + options.clearFixCssClass, "<ul role=\"tablist\"></ul>")),
         stepTitles = contentWrapper.children(options.headerTag),
         stepContents = contentWrapper.children(options.bodyTag);
@@ -1077,7 +1085,7 @@ function renderTemplate(template, substitutes)
  * @private
  * @method renderBody
  * @param wizard {Object} A jQuery wizard object
-  * @param options {Object} Settings of the current wizard
+ * @param options {Object} Settings of the current wizard
  * @param body {Object} A jQuery body object
  * @param index {Integer} The position of the body
  */
@@ -1665,6 +1673,16 @@ var defaults = $.fn.steps.defaults = {
      * @for defaults
      **/
     bodyTag: "div",
+
+    /**
+     * The section tag is used to find the step content section
+     *
+     * @property contentTag
+     * @type String
+     * @default "section"
+     * @for defaults
+     **/
+    contentTag: "section",
 
     /**
      * The content container tag which will be used to wrap all step contents.
