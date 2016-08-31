@@ -1059,7 +1059,7 @@ function renderPagination(wizard, options, state)
 {
     if (options.enablePagination)
     {
-        var pagination = "<{0} class=\""+options.actionsCssClass+" {1}\" data-ajax-content-hide=\"1\"><ul role=\"menu\" aria-label=\"{2}\">{3}</ul></{0}>",
+        var pagination = "<{0} class=\""+options.actionsCssClass+" {1}\" data-ajax-content-hide=\"true\"><ul role=\"menu\" aria-label=\"{2}\">{3}</ul></{0}>",
             buttonTemplate = options.buttonTemplate,
             buttons = "";
 

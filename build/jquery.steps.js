@@ -1,5 +1,5 @@
 /*! 
- * jQuery Steps v1.2.4 - 08/31/2016
+ * jQuery Steps v1.2.5 - 08/31/2016
  * Copyright (c) 2016 Rafael Staib (http://www.jquery-steps.com)
  * Licensed under MIT http://www.opensource.org/licenses/MIT
  */
@@ -1119,7 +1119,7 @@ function renderPagination(wizard, options, state)
 {
     if (options.enablePagination)
     {
-        var pagination = "<{0} class=\""+options.actionsCssClass+" {1}\" data-ajax-content-hide=\"1\"><ul role=\"menu\" aria-label=\"{2}\">{3}</ul></{0}>",
+        var pagination = "<{0} class=\""+options.actionsCssClass+" {1}\" data-ajax-content-hide=\"true\"><ul role=\"menu\" aria-label=\"{2}\">{3}</ul></{0}>",
             buttonTemplate = options.buttonTemplate,
             buttons = "";
 
