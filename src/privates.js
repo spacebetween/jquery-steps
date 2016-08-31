@@ -962,7 +962,7 @@ function render(wizard, options, state)
     }
     
     // Create a content wrapper and copy HTML from the intial wizard structure
-    var wrapperTemplate = "<{0} class=\"{1}\">{2}</{0}>",
+    var wrapperTemplate = "<{0} class=\"{1}\" data-ajax-content-hide=\"true\">{2}</{0}>",
         orientation = getValidEnumValue(stepsOrientation, options.stepsOrientation),
         verticalCssClass = (orientation === stepsOrientation.vertical) ? " vertical" : "",
         contentWrapper = $(wrapperTemplate.format(options.contentContainerTag, options.contentCssClass + " " + options.clearFixCssClass, wizardHtml)),
@@ -1059,7 +1059,7 @@ function renderPagination(wizard, options, state)
 {
     if (options.enablePagination)
     {
-        var pagination = "<{0} class=\""+options.actionsCssClass+" {1}\"><ul role=\"menu\" aria-label=\"{2}\">{3}</ul></{0}>",
+        var pagination = "<{0} class=\""+options.actionsCssClass+" {1}\" data-ajax-content-hide=\"1\"><ul role=\"menu\" aria-label=\"{2}\">{3}</ul></{0}>",
             buttonTemplate = options.buttonTemplate,
             buttons = "";
 
