@@ -1,5 +1,5 @@
 /*! 
- * jQuery Steps v1.2.5 - 08/31/2016
+ * jQuery Steps v1.2.6 - 09/28/2016
  * Copyright (c) 2016 Rafael Staib (http://www.jquery-steps.com)
  * Licensed under MIT http://www.opensource.org/licenses/MIT
  */
@@ -1315,7 +1315,7 @@ function stepClickHandler(event)
     }
 
     // If nothing has changed
-    if (oldIndex === state.currentIndex)
+    if (oldIndex === state.currentIndex && wizard.data('val') !== true)
     {
         getStepAnchor(wizard, oldIndex).focus();
         return false;

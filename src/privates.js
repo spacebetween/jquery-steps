@@ -1255,7 +1255,7 @@ function stepClickHandler(event)
     }
 
     // If nothing has changed
-    if (oldIndex === state.currentIndex)
+    if (oldIndex === state.currentIndex && wizard.data('val') !== true)
     {
         getStepAnchor(wizard, oldIndex).focus();
         return false;
